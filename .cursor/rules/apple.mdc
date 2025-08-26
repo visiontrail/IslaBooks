@@ -1,0 +1,56 @@
+---
+description: 项目必须符合 Apple 发布标准（App Store 审核指南与 HIG 等）
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+## 规范目的
+- 确保 iOS/iPadOS 从设计到实现满足 Apple 要求，降低审核风险并提升用户体验。
+
+## 硬性合规清单（上线必过）
+1) App Store Review Guidelines（重点）
+- 5.1 隐私：最小化采集；提供用途说明、隐私政策 URL、数据删除入口。
+- 5.1.1 权限：首次使用前申请系统权限；`Info.plist` 必填用途描述（如 `NSCameraUsageDescription`）。
+- 5.1.3 账号删除：在应用内提供“账号删除”，明确后果，并删除服务器侧数据。
+- 3.1 支付：数字内容/功能必须使用 IAP/订阅；不得绕过或引导外部支付。
+- 2.3 元数据：名称/副标题/关键词/截图/预览需真实反映功能，不得含测试或占位内容。
+- 4.2 质量：功能完整，不崩溃；避免“网页壳”与内容不足。
+- 推送与背景：推送仅用于用户价值场景且可关闭；后台模式/位置等权限须与功能强相关。
+- 生成式 AI：标注来源/免责声明；避免不当内容并提供举报与屏蔽能力。
+
+2) Human Interface Guidelines（HIG）
+- 导航/层级清晰；触控目标≥44pt；支持动态字体与浅/深色模式。
+- 图标、启动屏与多分辨率资源齐备；iPad 适配与多任务支持（阅读器关键）。
+
+3) 隐私与数据
+- App Privacy Nutrition Label 准确申报数据类型/用途；最小化采集与存储周期。
+- ATT（AppTrackingTransparency）仅在确需跨 App 跟踪时申请，并清晰说明场景与价值。
+- 提供“隐私政策”“服务条款”链接；支持数据导出与删除。
+
+4) IslaBooks 特定要求
+- 书源与版权：仅使用公共领域/合规来源，标注 Project Gutenberg 等出处与许可。
+- AI 回答：显示出处引用；未命中原文时标注“推断”。
+- UGC 合规：举报/屏蔽机制，滥用与敏感内容防护。
+- 离线缓存：说明缓存范围与清除入口。
+
+## 提交前检查清单（Submit Checklist）
+- 功能稳定：崩溃率低；冷/热启动与核心路径通过验收用例。
+- 权限与用途：`Info.plist` 权限描述完整且与实际一致；仅在需要时申请。
+- 账号与支付：账号删除完整闭环；IAP/订阅配置与商品元数据正确。
+- 元数据与素材：名称/描述/关键词/截图/预览视频真实准确；隐私标签填写一致。
+- 技术配置：ATS、后台模式、推送、通知类别、Universal Links、深色模式适配完成。
+
+## 常见拒审原因与预防
+- 功能过轻或需注册才可访问核心内容 → 提供可用的访客体验或合理说明。
+- 引导外部支付或规避 IAP → 全部数字内容统一 IAP。
+- 截图/描述与实际不符 → 以真实界面与功能为准更新素材。
+- 缺少账号删除或仅停用不删除数据 → 实现彻底删除并回执提示。
+- 误用权限/目的描述不清 → 收紧权限范围并完善用途文案。
+
+## 开发者参考（外部链接）
+- App Store Review Guidelines: https://developer.apple.com/app-store/review/guidelines/
+- Human Interface Guidelines: https://developer.apple.com/design/human-interface-guidelines/
+- App Privacy Details: https://developer.apple.com/app-store/app-privacy-details/
+- App Tracking Transparency: https://developer.apple.com/documentation/apptrackingtransparency
+
