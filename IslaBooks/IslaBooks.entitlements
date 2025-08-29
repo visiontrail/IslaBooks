@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- CloudKit支持 -->
+	<key>com.apple.developer.icloud-container-identifiers</key>
+	<array>
+		<string>iCloud.com.islabooks.app</string>
+	</array>
+	<key>com.apple.developer.icloud-services</key>
+	<array>
+		<string>CloudKit</string>
+	</array>
+	
+	<!-- 文档类型支持 -->
+	<key>com.apple.developer.document-browser</key>
+	<true/>
+	<key>com.apple.developer.shared-with-you</key>
+	<true/>
+	
+	<!-- 应用组（可选，用于扩展） -->
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.com.islabooks.app</string>
+	</array>
+	
+	<!-- 网络访问 -->
+	<key>com.apple.developer.networking.wifi-info</key>
+	<true/>
+	
+	<!-- 推送通知 -->
+	<key>aps-environment</key>
+	<string>development</string>
+	
+	<!-- 后台处理 -->
+	<key>com.apple.developer.background-processing</key>
+	<array>
+		<string>com.islabooks.app.sync</string>
+		<string>com.islabooks.app.analytics</string>
+	</array>
+	
+	<!-- Associated Domains（用于Universal Links） -->
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:islabooks.com</string>
+		<string>applinks:www.islabooks.com</string>
+	</array>
+</dict>
+</plist>
+
